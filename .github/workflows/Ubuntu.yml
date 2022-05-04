@@ -107,7 +107,18 @@ jobs:
 
     - name: Configure cmake
       id: configure
-      run: cmake . -B ${{ env.build_dir }} -DCMAKE_BUILD_TYPE=${{ env.config }} -DCUDAToolkit_ROOT=${CUDA_PATH}
+      run: |
+        
+        ls -la {CUDA_PATH} 
+        
+        cmake --version 
+        
+        # CUDA_TOOLKIT_ROOT_DIR
+        cmake . \
+          -B ${{ env.build_dir }} \
+          -DCMAKE_BUILD_TYPE=${{ env.config }} \
+          -DCUDAToolkit_ROOT=${CUDA_PATH}
+          
 
     - name: Configure Error Processing
       if: ${{ failure() && steps.configure.outcome == 'failure' }}
