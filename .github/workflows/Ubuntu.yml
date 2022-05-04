@@ -67,7 +67,8 @@ jobs:
         
         #export PATH="$PATH:${PWD}/cuda_nvcc-linux-x86_64-11.4.120-archive/bin"
         
-        echo "CUDA_PATH=${PWD}/cuda_nvcc-linux-x86_64-11.4.120-archive"
+        CUDA_PATH="${PWD}/cuda_nvcc-linux-x86_64-11.4.120-archive"
+        echo "CUDA_PATH:", ${CUDA_PATH}
         export CUDA_PATH=${CUDA_PATH}
         export PATH="$CUDA_PATH/bin:$PATH"
         export LD_LIBRARY_PATH="$CUDA_PATH/lib:$LD_LIBRARY_PATH"
