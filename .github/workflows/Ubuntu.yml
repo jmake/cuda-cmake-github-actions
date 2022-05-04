@@ -52,11 +52,17 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Get CUDA 
+      ##
+      ## https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+      ##
       run : |
         wget https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvcc/linux-x86_64/cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz
-        tar -xvf cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz
-        cd cuda_nvcc-linux-x86_64-11.4.120-archive
-        ls -la * 
+        tar -xvf cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz > /dev/null 
+        #cd cuda_nvcc-linux-x86_64-11.4.120-archive
+        ls -la cuda_nvcc-linux-x86_64-11.4.120-archive/* 
+        
+        export PATH="$PATH:${PWD}/cuda_nvcc-linux-x86_64-11.4.120-archive/bin"
+        nvcc --version 
 
     - name: Install CUDA
       env:
