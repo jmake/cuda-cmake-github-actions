@@ -35,9 +35,9 @@ jobs:
           # - os: ubuntu-18.04
           #   cuda: "10.2"
           #   gcc: 8
-          - os: ubuntu-18.04
-            cuda: "10.1"
-            gcc: 8
+          #- os: ubuntu-18.04
+          #  cuda: "10.1"
+          #  gcc: 8
 
           # 16.04 runners are deprecated / removed in september 2021.
           # It should still be possible to install CUDA 8 - CUDA 10 in 18.04 images by using the 16.04 repository, although milage may vary.
@@ -48,6 +48,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Get CUDA 
+      run : |
+        wget https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvcc/linux-x86_64/cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz
+        tar -xvf cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz
+        cd cuda_nvcc-linux-x86_64-11.4.120-archive
+        ls -la * 
 
     - name: Install CUDA
       env:
