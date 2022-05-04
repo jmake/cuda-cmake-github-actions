@@ -51,14 +51,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Get CUDA 
+    - name: Getting CUDA ...  
       ##
       ## https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
       ##
       run : |
         echo "wget..."
         wget https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvcc/linux-x86_64/cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz > /dev/null 
-        
+
+    - name: Prepating CUDA ...
+      run : |
         echo "tar..."
         tar -xvf cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz > /dev/null 
         
