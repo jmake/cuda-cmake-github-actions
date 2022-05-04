@@ -117,7 +117,9 @@ jobs:
         cmake . \
           -B ${{ env.build_dir }} \
           -DCMAKE_BUILD_TYPE=${{ env.config }} \
-          -DCUDAToolkit_ROOT=${CUDA_PATH}
+          -DMAKE_CUDA_COMPILER=${CUDA_PATH}/bin 
+          
+          #-DCUDAToolkit_ROOT=${CUDA_PATH}
           
 
     - name: Configure Error Processing
