@@ -56,20 +56,24 @@ jobs:
       ## https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
       ##
       run : |
-        wget https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvcc/linux-x86_64/cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz
+        echo "wget..."
+        wget https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvcc/linux-x86_64/cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz > /dev/null 
+        
+        echo "tar..."
         tar -xvf cuda_nvcc-linux-x86_64-11.4.120-archive.tar.xz > /dev/null 
+        
         #cd cuda_nvcc-linux-x86_64-11.4.120-archive
-        ls -la cuda_nvcc-linux-x86_64-11.4.120-archive/* 
+        #ls -la cuda_nvcc-linux-x86_64-11.4.120-archive/* 
         
         export PATH="$PATH:${PWD}/cuda_nvcc-linux-x86_64-11.4.120-archive/bin"
         nvcc --version 
-
-    - name: Install CUDA
-      env:
-        cuda: ${{ matrix.cuda }}
-      run: ./scripts/actions/install_cuda_ubuntu.sh
-      shell: bash
-
+#
+#    - name: Install CUDA
+#      env:
+#        cuda: ${{ matrix.cuda }}
+#      run: ./scripts/actions/install_cuda_ubuntu.sh
+#      shell: bash
+#
     # Specify the correct host compilers
     - name: Install/Select gcc and g++ 
       run: |
