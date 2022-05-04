@@ -1,16 +1,17 @@
 # Cmake for simple cuda project which uses NVTX markers as an optional thing.
 
 # Set the minimum cmake version to that which supports cuda natively.
-cmake_minimum_required(VERSION VERSION 3.10 FATAL_ERROR)
+cmake_minimum_required(VERSION VERSION 3.20 FATAL_ERROR)
 
 
 # Name the project and set languages
 #project(main CUDA CXX)
 project(main CXX)
 
+find_package(CUDAToolkit)
 
-find_package(CUDA  REQUIRED)
-include_directories("${CUDA_INCLUDE_DIRS}")
+#find_package(CUDA  REQUIRED)
+#include_directories("${CUDA_INCLUDE_DIRS}")
 
 # Set a default build type if not passed
 set(default_build_type "Release")
