@@ -6,9 +6,9 @@ cmake_minimum_required(VERSION VERSION 3.20 FATAL_ERROR)
 
 # Name the project and set languages
 #project(main CUDA CXX)
-project(main CXX)
+project(main CXX CUDA)
 
-find_package(CUDAToolkit)
+#find_package(CUDAToolkit)
 
 #find_package(CUDA  REQUIRED)
 #include_directories("${CUDA_INCLUDE_DIRS}")
